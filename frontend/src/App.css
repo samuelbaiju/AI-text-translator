@@ -270,7 +270,8 @@ body, html, #root {
 .translate-form label {
   font-weight: 600;
   margin-bottom: 0.2rem;
-  color: #222;
+  color: #fff;
+  background: #222;
   font-size: 1.1rem;
 }
 .translate-form select, .translate-form textarea {
@@ -328,7 +329,8 @@ body, html, #root {
 }
 .translated-text {
   font-size: 1.3rem;
-  color: #222;
+  color: #fff;
+  background: #222;
   margin-top: 0.5rem;
   word-break: break-word;
 }
