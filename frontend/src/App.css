@@ -1,3 +1,108 @@
+/* Modern Login Page Styles - Refined to Match Image */
+.login-bg {
+  min-height: 100vh;
+  width: 100vw;
+  background: linear-gradient(120deg, #eaf1ff 0%, #e3eaff 40%, #c7d7f9 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 0;
+}
+
+.login-container {
+  display: flex;
+  flex-direction: row;
+  background: #fff;
+  border-radius: 22px;
+  box-shadow: 0 8px 32px 0 rgba(44, 62, 80, 0.08), 0 1.5px 8px 0 rgba(44, 62, 80, 0.04);
+  overflow: hidden;
+  max-width: 900px;
+  width: 95vw;
+  min-height: 440px;
+}
+
+.login-info-panel {
+  flex: 1.2;
+  background: transparent;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 3.5rem 2.8rem 3.5rem 2.8rem;
+  min-width: 280px;
+}
+.login-info-panel h2 {
+  font-size: 2.1rem;
+  font-weight: 700;
+  color: #222;
+  margin-bottom: 1.2rem;
+}
+.login-info-panel p {
+  color: #444;
+  font-size: 1.13rem;
+  margin-bottom: 0;
+}
+
+.login-form-panel {
+  flex: 1.1;
+  background: #f8faff;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 3.5rem 2.5rem;
+  min-width: 340px;
+}
+.login-title {
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: #222;
+  margin-bottom: 2.2rem;
+  text-align: left;
+  width: 100%;
+}
+.login-form {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 1.3rem;
+}
+.login-input {
+  font-size: 1.08rem;
+  padding: 0.95rem 1.1rem;
+  border: 1.5px solid #e3eaff;
+  border-radius: 10px;
+  background: #fff;
+  margin-bottom: 0.2rem;
+  transition: border 0.2s;
+  outline: none;
+  color: #222;
+}
+.login-input:focus {
+  border: 1.5px solid #2563eb;
+}
+.login-btn {
+  padding: 0.95rem 0;
+  font-size: 1.08rem;
+  background: #2563eb;
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  font-weight: 600;
+  margin-top: 0.5rem;
+  box-shadow: 0 2px 8px rgba(44, 62, 80, 0.08);
+  transition: background 0.2s, transform 0.1s;
+  width: 100%;
+  letter-spacing: 0.01em;
+}
+.login-btn:disabled {
+  background: #b3cfff;
+  color: #fff;
+  cursor: not-allowed;
+}
 /* Modern Translate Page Styles Inspired by UI Image */
 .translate-bg {
   min-height: 100vh;
