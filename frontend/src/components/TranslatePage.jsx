@@ -1,3 +1,4 @@
+
 import React from "react";
 import "../App.css";
 
@@ -15,15 +16,15 @@ const TranslatePage = ({
   error
 }) => {
   return (
-    <div className="inputbox-bg">
-      <div className="inputbox-card">
-        <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 16 }}>
-          <div className="rainbow-text">AI Text Translator</div>
-          <button className="inputbox-close logout-btn" onClick={onLogout} title="Logout">⨉</button>
+    <div className="translate-bg">
+      <div className="translate-card">
+        <div className="translate-header">
+          <div className="translate-title">AI Text Translator</div>
+          <button className="translate-logout" onClick={onLogout} title="Logout">⨉</button>
         </div>
-        <form className="inputbox-form" onSubmit={onTranslate}>
+        <form className="translate-form" onSubmit={onTranslate}>
           <textarea
-            className="inputbox-text"
+            className="translate-input"
             placeholder="Enter text to translate"
             value={text}
             onChange={(e) => setText(e.target.value)}
@@ -31,7 +32,7 @@ const TranslatePage = ({
             style={{ minHeight: 80 }}
           />
           <select
-            className="inputbox-select"
+            className="translate-select"
             value={targetLanguage}
             onChange={(e) => setTargetLanguage(e.target.value)}
             required
@@ -43,18 +44,16 @@ const TranslatePage = ({
               </option>
             ))}
           </select>
-          <div className="inputbox-btns">
-            <button className="inputbox-clear" type="button" onClick={onClear}>
-              Clear
-            </button>
-            <button className="inputbox-submit" type="submit" disabled={loading}>
-              {loading ? "Translating..." : "Translate"}
-            </button>
-          </div>
-          {error && <div className="error">{error}</div>}
+          <button className="translate-btn" type="submit" disabled={loading}>
+            {loading ? "Translating..." : "Translate"}
+          </button>
+          <button className="translate-clear" type="button" onClick={onClear}>
+            Clear
+          </button>
+          {error && <div className="error" style={{marginTop: 12}}>{error}</div>}
         </form>
         {result && (
-          <div className="result">
+          <div className="translate-result">
             <h2>Result</h2>
             <div className="translated-text">{result}</div>
           </div>

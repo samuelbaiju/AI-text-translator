@@ -1,3 +1,145 @@
+/* Modern Translate Page Styles Inspired by UI Image */
+.translate-bg {
+  min-height: 100vh;
+  width: 100vw;
+  background: linear-gradient(120deg, #cfd9ff 0%, #a1c4fd 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 0;
+}
+
+.translate-card {
+  background: #fff;
+  border-radius: 20px;
+  box-shadow: 0 8px 32px rgba(44, 62, 80, 0.10), 0 1.5px 8px rgba(44, 62, 80, 0.08);
+  max-width: 480px;
+  width: 95vw;
+  padding: 2.5rem 2rem 2rem 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  position: relative;
+}
+.translate-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1.5rem;
+}
+.translate-title {
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: #3a3a3a;
+}
+.translate-logout {
+  background: #f3f6fa;
+  color: #2563eb;
+  border: none;
+  border-radius: 8px;
+  width: 36px;
+  height: 36px;
+  font-size: 1.5rem;
+  font-weight: bold;
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(44, 62, 80, 0.05);
+  transition: background 0.2s, color 0.2s, transform 0.1s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.translate-logout:hover {
+  background: #e3eaff;
+  color: #e53935;
+  transform: scale(1.08);
+}
+.translate-form {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+  align-items: stretch;
+}
+.translate-input {
+  font-size: 1.1rem;
+  padding: 0.9rem 1rem;
+  border: 1.5px solid #c3d0e6;
+  border-radius: 10px;
+  background: #fff;
+  transition: border 0.2s;
+  outline: none;
+  color: #222;
+  resize: vertical;
+  min-height: 80px;
+  max-height: 200px;
+}
+.translate-input:focus {
+  border: 1.5px solid #4a90e2;
+}
+.translate-select {
+  font-size: 1.1rem;
+  padding: 0.7rem;
+  border: 1.5px solid #c3d0e6;
+  border-radius: 10px;
+  background: #fff;
+  color: #222;
+  transition: border 0.2s;
+}
+.translate-select:focus {
+  border: 1.5px solid #4a90e2;
+}
+.translate-btn {
+  padding: 0.9rem 0;
+  font-size: 1.1rem;
+  background: linear-gradient(90deg, #4f8cff 0%, #2563eb 100%);
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  font-weight: 600;
+  margin-top: 0.5rem;
+  box-shadow: 0 2px 8px rgba(44, 62, 80, 0.08);
+  transition: background 0.2s, transform 0.1s;
+  width: 100%;
+}
+.translate-btn:disabled {
+  background: #b3cfff;
+  color: #fff;
+  cursor: not-allowed;
+}
+.translate-clear {
+  padding: 0.7rem 0;
+  font-size: 1.1rem;
+  background: #f3f6fa;
+  color: #2563eb;
+  border: none;
+  border-radius: 10px;
+  font-weight: 600;
+  margin-top: 0.2rem;
+  box-shadow: 0 2px 8px rgba(44, 62, 80, 0.05);
+  transition: background 0.2s, color 0.2s, transform 0.1s;
+  width: 100%;
+}
+.translate-clear:hover {
+  background: #e3eaff;
+  color: #e53935;
+  transform: scale(1.03);
+}
+.translate-result {
+  margin-top: 2rem;
+  background: #f8faff;
+  padding: 1.2rem 1rem;
+  border-radius: 10px;
+  box-shadow: 0 1px 4px rgba(44, 62, 80, 0.06);
+  width: 100%;
+  text-align: center;
+}
+.translate-result h2 {
+  color: #2563eb;
+  margin-bottom: 0.7rem;
+}
 /* Modern Login Page Styles Inspired by UI Image */
 .login-bg {
   min-height: 100vh;
