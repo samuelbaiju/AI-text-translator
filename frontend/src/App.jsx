@@ -57,7 +57,7 @@ function App() {
     setError('');
     setTranslated('');
     try {
-      const response = await fetch('http://localhost:8000/translate', {
+      const response = await fetch('https://ai-text-translator.onrender.com/translate', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ text, target_language: targetLanguage })
