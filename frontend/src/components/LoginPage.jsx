@@ -1,3 +1,4 @@
+
 import React from "react";
 import "../App.css";
 
@@ -11,32 +12,38 @@ const LoginPage = ({ onLogin, error, loading }) => {
   };
 
   return (
-    <div className="inputbox-bg">
-      <div className="inputbox-card">
-        <div className="rainbow-text" style={{marginBottom: "2rem"}}>Sign In</div>
-        <form className="inputbox-form" onSubmit={handleSubmit}>
-          <input
-            className="inputbox-text"
-            type="text"
-            placeholder="Username"
-            value={username}
-            onChange={(e) => setUsername(e.target.value)}
-            autoFocus
-            required
-          />
-          <input
-            className="inputbox-text"
-            type="password"
-            placeholder="Password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            required
-          />
-          <button className="inputbox-submit" type="submit" disabled={loading}>
-            {loading ? "Logging in..." : "Login"}
-          </button>
-          {error && <div className="error">{error}</div>}
-        </form>
+    <div className="login-bg">
+      <div className="login-container">
+        <div className="login-info-panel">
+          <h2>Fast, Efficient and Productive</h2>
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed.</p>
+        </div>
+        <div className="login-form-panel">
+          <div className="login-title">Sign In</div>
+          <form className="login-form" onSubmit={handleSubmit}>
+            <input
+              className="login-input"
+              type="text"
+              placeholder="Username"
+              value={username}
+              onChange={(e) => setUsername(e.target.value)}
+              autoFocus
+              required
+            />
+            <input
+              className="login-input"
+              type="password"
+              placeholder="Password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              required
+            />
+            <button className="login-btn" type="submit" disabled={loading}>
+              {loading ? "Logging in..." : "Login"}
+            </button>
+            {error && <div className="error" style={{marginTop: 12}}>{error}</div>}
+          </form>
+        </div>
       </div>
     </div>
   );

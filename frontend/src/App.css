@@ -1,3 +1,107 @@
+/* Modern Login Page Styles Inspired by UI Image */
+.login-bg {
+  min-height: 100vh;
+  width: 100vw;
+  background: linear-gradient(120deg, #e3efff 0%, #eaf6ff 40%, #b3cfff 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 0;
+}
+
+.login-container {
+  display: flex;
+  flex-direction: row;
+  background: #fff;
+  border-radius: 24px;
+  box-shadow: 0 8px 32px rgba(44, 62, 80, 0.10), 0 1.5px 8px rgba(44, 62, 80, 0.08);
+  overflow: hidden;
+  max-width: 800px;
+  width: 90vw;
+  min-height: 400px;
+}
+
+.login-info-panel {
+  flex: 1.2;
+  background: transparent;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 3rem 2.5rem 3rem 2.5rem;
+  min-width: 260px;
+}
+.login-info-panel h2 {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #222;
+  margin-bottom: 1.2rem;
+}
+.login-info-panel p {
+  color: #444;
+  font-size: 1.1rem;
+  margin-bottom: 0;
+}
+
+.login-form-panel {
+  flex: 1.1;
+  background: #f8faff;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 2.5rem 2rem;
+  min-width: 300px;
+}
+.login-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #222;
+  margin-bottom: 2rem;
+  text-align: left;
+  width: 100%;
+}
+.login-form {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+}
+.login-input {
+  font-size: 1.1rem;
+  padding: 0.9rem 1rem;
+  border: 1.5px solid #c3d0e6;
+  border-radius: 10px;
+  background: #fff;
+  margin-bottom: 0.2rem;
+  transition: border 0.2s;
+  outline: none;
+  color: #222;
+}
+.login-input:focus {
+  border: 1.5px solid #4a90e2;
+}
+.login-btn {
+  padding: 0.9rem 0;
+  font-size: 1.1rem;
+  background: #2563eb;
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  font-weight: 600;
+  margin-top: 0.5rem;
+  box-shadow: 0 2px 8px rgba(44, 62, 80, 0.08);
+  transition: background 0.2s, transform 0.1s;
+  width: 100%;
+}
+.login-btn:disabled {
+  background: #b3cfff;
+  color: #fff;
+  cursor: not-allowed;
+}
 /* --- Black Theme and Button Structure Overrides --- */
 .inputbox-card {
   background: #111 !important;
