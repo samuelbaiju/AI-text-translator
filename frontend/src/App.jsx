@@ -1,7 +1,10 @@
 
 
+
 import { useState } from 'react';
 import './App.css';
+import LoginPage from './components/LoginPage';
+import TranslatePage from './components/TranslatePage';
 
 const LANGUAGES = [
   { code: 'af', name: 'Afrikaans' }, { code: 'sq', name: 'Albanian' }, { code: 'am', name: 'Amharic' },
@@ -126,87 +129,50 @@ function App() {
 
   if (!token) {
     return (
-      <div className="inputbox-bg">
-        <div className="inputbox-card">
-          <div className="inputbox-header">
-            <span className="inputbox-title">Login</span>
-          </div>
-          <form onSubmit={handleLogin} className="inputbox-form">
-            <input
-              className="inputbox-text"
-              type="text"
-              value={loginUser}
-              onChange={e => setLoginUser(e.target.value)}
-              placeholder="Username"
-              required
-            />
-            <input
-              className="inputbox-text"
-              type="password"
-              value={loginPass}
-              onChange={e => setLoginPass(e.target.value)}
-              placeholder="Password"
-              required
-            />
-            <button type="submit" className="inputbox-submit">Login</button>
-          </form>
-          {loginError && <div className="error">{loginError}</div>}
-        </div>
-      </div>
+      <LoginPage
+        onLogin={async (user, pass) => {
+          setLoginUser(user);
+          setLoginPass(pass);
+          setLoginError("");
+          try {
+            const response = await fetch('https://ai-text-translator.onrender.com/login', {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+              body: `username=${encodeURIComponent(user)}&password=${encodeURIComponent(pass)}`
+            });
+            if (!response.ok) {
+              const data = await response.json();
+              throw new Error(data.detail || 'Login failed');
+            }
+            const data = await response.json();
+            setToken(data.access_token);
+            localStorage.setItem('jwt_token', data.access_token);
+            setLoginUser('');
+            setLoginPass('');
+          } catch (err) {
+            setLoginError(err.message);
+          }
+        }}
+        error={loginError}
+        loading={false}
+      />
     );
   }
 
   return (
-    <div className="inputbox-bg">
-      <div className="inputbox-card">
-        <div className="inputbox-header">
-          <span className="inputbox-title">Input Field</span>
-          <button className="inputbox-close" onClick={() => setShowBox(false)} title="Close">×</button>
-        </div>
-        <button className="inputbox-clear" style={{marginBottom: '1rem', width: '100px'}} onClick={handleLogout}>Logout</button>
-        <form onSubmit={handleSubmit} className="inputbox-form">
-          <input
-            className="inputbox-text"
-            type="text"
-            value={text}
-            onChange={e => setText(e.target.value)}
-            placeholder="Enter text to translate"
-            required
-          />
-          <select
-            className="inputbox-select"
-            value={targetLanguage}
-            onChange={e => setTargetLanguage(e.target.value)}
-            required
-          >
-            <option value="">Select language</option>
-            {LANGUAGES.map(lang => (
-              <option key={lang.code} value={lang.code}>{lang.name}</option>
-            ))}
-          </select>
-          <div className="inputbox-btns">
-            <button
-              type="button"
-              className="inputbox-clear"
-              onClick={handleClear}
-              tabIndex={-1}
-            >CLEAR</button>
-            <button
-              type="submit"
-              className="inputbox-submit"
-              disabled={loading}
-            >{loading ? 'Translating...' : 'Translate'}</button>
-          </div>
-        </form>
-        {error && <div className="error">{error}</div>}
-        {translated && (
-          <div className="result">
-            <h2>Translated Text:</h2>
-            <div className="translated-text">{translated}</div>
-          </div>
-        )}
-      </div>
-    </div>
+    <TranslatePage
+      onLogout={handleLogout}
+      onTranslate={handleSubmit}
+      onClear={handleClear}
+      text={text}
+      setText={setText}
+      targetLanguage={targetLanguage}
+      setTargetLanguage={setTargetLanguage}
+      languages={LANGUAGES}
+      result={translated}
+      loading={loading}
+      error={error}
+    />
   );
 }
 
