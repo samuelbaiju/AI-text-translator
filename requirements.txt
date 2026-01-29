@@ -4,3 +4,5 @@ uvicorn
 googletrans==4.0.0-rc1
 pydantic
 requests
+python-jose[cryptography]
+passlib[bcrypt]
