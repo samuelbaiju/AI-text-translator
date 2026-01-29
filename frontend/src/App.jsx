@@ -43,6 +43,7 @@ const LANGUAGES = [
 ];
 
 
+
 function App() {
   const [text, setText] = useState('');
   const [targetLanguage, setTargetLanguage] = useState('');
@@ -50,6 +51,42 @@ function App() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
   const [showBox, setShowBox] = useState(true);
+  const [token, setToken] = useState(() => localStorage.getItem('jwt_token') || '');
+  const [loginUser, setLoginUser] = useState('');
+  const [loginPass, setLoginPass] = useState('');
+  const [loginError, setLoginError] = useState('');
+
+  const handleLogin = async (e) => {
+    e.preventDefault();
+    setLoginError('');
+    try {
+      const response = await fetch('https://ai-text-translator.onrender.com/login', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: `username=${encodeURIComponent(loginUser)}&password=${encodeURIComponent(loginPass)}`
+      });
+      if (!response.ok) {
+        const data = await response.json();
+        throw new Error(data.detail || 'Login failed');
+      }
+      const data = await response.json();
+      setToken(data.access_token);
+      localStorage.setItem('jwt_token', data.access_token);
+      setLoginUser('');
+      setLoginPass('');
+    } catch (err) {
+      setLoginError(err.message);
+    }
+  };
+
+  const handleLogout = () => {
+    setToken('');
+    localStorage.removeItem('jwt_token');
+    setText('');
+    setTargetLanguage('');
+    setTranslated('');
+    setError('');
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -59,7 +96,10 @@ function App() {
     try {
       const response = await fetch('https://ai-text-translator.onrender.com/translate', {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${token}`
+        },
         body: JSON.stringify({ text, target_language: targetLanguage })
       });
       if (!response.ok) {
@@ -84,6 +124,38 @@ function App() {
 
   if (!showBox) return null;
 
+  if (!token) {
+    return (
+      <div className="inputbox-bg">
+        <div className="inputbox-card">
+          <div className="inputbox-header">
+            <span className="inputbox-title">Login</span>
+          </div>
+          <form onSubmit={handleLogin} className="inputbox-form">
+            <input
+              className="inputbox-text"
+              type="text"
+              value={loginUser}
+              onChange={e => setLoginUser(e.target.value)}
+              placeholder="Username"
+              required
+            />
+            <input
+              className="inputbox-text"
+              type="password"
+              value={loginPass}
+              onChange={e => setLoginPass(e.target.value)}
+              placeholder="Password"
+              required
+            />
+            <button type="submit" className="inputbox-submit">Login</button>
+          </form>
+          {loginError && <div className="error">{loginError}</div>}
+        </div>
+      </div>
+    );
+  }
+
   return (
     <div className="inputbox-bg">
       <div className="inputbox-card">
@@ -91,6 +163,7 @@ function App() {
           <span className="inputbox-title">Input Field</span>
           <button className="inputbox-close" onClick={() => setShowBox(false)} title="Close">×</button>
         </div>
+        <button className="inputbox-clear" style={{marginBottom: '1rem', width: '100px'}} onClick={handleLogout}>Logout</button>
         <form onSubmit={handleSubmit} className="inputbox-form">
           <input
             className="inputbox-text"
