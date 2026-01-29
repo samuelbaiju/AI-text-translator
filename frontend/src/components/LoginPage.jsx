@@ -15,8 +15,8 @@ const LoginPage = ({ onLogin, error, loading }) => {
     <div className="login-bg">
       <div className="login-container">
         <div className="login-info-panel">
-          <h2>Fast, Efficient and Productive</h2>
-          <p>Welcome to the AI text translator</p>
+          <h2>Welcome to the AI text translator</h2>
+          <p>Fast, Efficient and Productive</p>
         </div>
         <div className="login-form-panel">
           <div className="login-title">Sign In</div>
