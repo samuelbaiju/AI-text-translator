@@ -1,3 +1,54 @@
+/* --- Black Theme and Button Structure Overrides --- */
+.inputbox-card {
+  background: #111 !important;
+}
+.rainbow-text::before {
+  background: #111 !important;
+}
+.inputbox-close {
+  background: #111 !important;
+  color: #fff !important;
+  border: 2px solid #fff !important;
+  border-radius: 8px !important;
+}
+.inputbox-close:hover {
+  background: #222 !important;
+  color: #e53935 !important;
+  border-color: #e53935 !important;
+}
+.inputbox-clear, .logout-btn {
+  background: #111 !important;
+  color: #fff !important;
+  border: 2px solid #fff !important;
+  border-radius: 30px !important;
+  font-weight: 600;
+  box-shadow: 0 2px 8px rgba(255,255,255,0.05);
+  transition: background 0.2s, color 0.2s, border 0.2s, transform 0.1s;
+}
+.inputbox-clear:hover, .logout-btn:hover {
+  background: #222 !important;
+  color: #e53935 !important;
+  border-color: #e53935 !important;
+  transform: scale(1.04);
+}
+.inputbox-btns {
+  justify-content: center !important;
+}
+.inputbox-submit {
+  background: #111 !important;
+  color: #fff !important;
+  border: 2px solid #fff !important;
+  border-radius: 30px !important;
+  font-weight: 600;
+  box-shadow: 0 2px 8px rgba(255,255,255,0.05);
+  transition: background 0.2s, color 0.2s, border 0.2s, transform 0.1s;
+}
+.inputbox-submit:disabled {
+  background: #333 !important;
+  color: #aaa !important;
+  border-color: #aaa !important;
+  cursor: not-allowed !important;
+}
 .inputbox-bg {
   min-height: 100vh;
   width: 100vw;
@@ -369,12 +420,12 @@ body, html, #root {
     margin-top: 1rem;
   }
   .result {
-    margin-top: 2rem;
-    background: #f6f8fa;
-    padding: 1rem;
-    border-radius: 5px;
-  }
-  .translated-text {
+    margin-top: 2.5rem;
+    text-align: center;
+    color: #fff;
+    font-size: 1.15rem;
+    letter-spacing: 0.03em;
+    font-weight: 500;
     font-size: 1.1rem;
     color: #222;
     margin-top: 0.5rem;
